@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: springsecurityjwt
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: user
+    password: password
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+server:
+  port: 8080
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: password
+    key-store-type: PKCS12
+    key-alias: myalias
+
+tokens:
+  exp-time: 86400000
+  exp-time-hours: 24Hr
+  secret-key: 989421808142981275807412047214079dsabkbhjbKBSADkb87adsjhjkhaDSjkhvdbsajDSAHJe8279410
+  algorithm: HmacSHA256
